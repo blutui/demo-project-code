@@ -1,0 +1,7 @@
+<div class="flash-messages">
+  {% for flash in messages %}
+    <div class="alert alert-{{ flash.type }}" role="alert">
+      <span>{{ flash.message }}</span>
+    </div>
+  {% endfor %}
+</div>

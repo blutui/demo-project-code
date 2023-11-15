@@ -1,0 +1,12 @@
+{% for entry in collection.entries|sort_by('sort-order') %}
+  <div class="pb-4">
+    <div class="message">
+      {{ entry.testimonial | raw }}
+    </div>
+
+    <p class="mb-0 text-right">
+      <b>{{ entry.name}}</b><br>
+      <span class="h6">{{ entry.subtitle }}</span>
+    </p>
+  </div>
+{% endfor %}

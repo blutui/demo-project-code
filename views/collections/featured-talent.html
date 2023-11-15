@@ -1,0 +1,13 @@
+{% for entry in collection.entries|sort_by('feat-sort-order') %}
+  {% if entry.featured == "Yes" %}
+    <div class="talent-block py-2 px-md-3 px-2">
+      <a href="/talent/{{ entry.name|slug }}">
+        <img src="{{ entry.profile }}" alt="{{ entry.name }}" width="100%" class="pb-2">
+        <h5>{{ entry.name }}</h5>
+        {% for type in entry.type|slice(0,1) %}
+          <h6 class="text-white">{{ type }}</h6>
+        {% endfor %}
+      </a>
+    </div>
+  {% endif %}
+{% endfor %}

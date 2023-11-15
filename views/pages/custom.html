@@ -1,0 +1,47 @@
+{% set categories = cms.collection('categories') %}
+{% set collection = cms.collection('talent') %}
+{% set category = categories|filter(entry => (entry.category|slug) == route.data.slug)|first %}
+
+
+{% extends 'templates/base' %}
+
+{% block content %}
+
+
+<div class="bg-gradient text-white talent-block-banner">
+  <div class="container pt-sm-5 pt-4">
+    <div class="row mt-5 pb-4 rel-block">
+      <div class="subtext">
+        {% include 'assets/subtext/custom.html' %}
+      </div>
+      <div class="et-icon et-icon-category">
+        {% include 'assets/et-icon.html' %}
+      </div>
+
+      <div class="col-12 mb-3">
+        {{ cms_heading('custom') }}
+      </div>
+      <div class="col-lg-10">
+        {{ cms_text('custom-content') }}
+        {{ cms_text('custom-content-2') }}
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  {% include 'includes/subheader' %}
+</div>
+
+<div class="container">
+  {% include 'components/price.html' %}
+</div>
+
+<div class="container py-5">
+  <div class="row">
+    {{ collection("talent", "collections/categories/comedians") }}
+  </div>
+</div>
+
+
+{% endblock %}

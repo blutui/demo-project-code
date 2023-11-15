@@ -1,0 +1,79 @@
+{% set categories = cms.collection('categories') %}
+{% set collection = cms.collection('talent') %}
+{% set category = categories|filter(entry => (entry.category|slug) == route.data.slug)|first %}
+
+
+{% extends 'templates/collection' %}
+
+
+{% block head %}
+
+
+<title>{{ category.category }} Speakers | {{ settings['site_name'] }}</title>
+
+<meta name="google-site-verification" content="{{ settings['google_verification'] }}">
+<meta name="description" content="{{ category.page|length > 140 ? category.page|striptags|slice(0, 140) ~ '...' : category.page }}">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="canonical" href="{% if page.uri %}{{ page.uri }}{% endif %}">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="{{ settings['site_name'] }}">
+<meta property="og:title" content="{{ category.category }} | {{ settings['site_name'] }}">
+<meta property="og:image" content="{{ asset('/images/opengraph.jpg') }}">
+<meta property="og:description" content="{{ category.page|length > 140 ? category.page|striptags|slice(0, 140) ~ '...' : category.page }}">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="{{ category.category }} | {{ settings['site_name'] }}">
+<meta name="twitter:description" content="{{ category.page|length > 140 ? category.page|striptags|slice(0, 140) ~ '...' : category.page }}">
+<meta name="twitter:image" content="{{ asset('/images/opengraph.jpg')}}">
+
+
+{% endblock %}
+
+
+
+{% block content %}
+
+
+<div class="bg-gradient text-white talent-block-banner">
+  <div class="container pt-sm-5 pt-4">
+    <div class="row mt-5 pb-4 rel-block">
+      <div class="subtext">
+        {% include 'assets/subtext/speakers.html' %}
+      </div>
+      <div class="et-icon et-icon-category">
+        {% include 'assets/et-icon.html' %}
+      </div>
+
+      <div class="col-12">
+        <h1 class="mb-3">{{ category.category }}</h1>
+      </div>
+
+      <div class="col-lg-10">
+        {{ category.page | raw }}
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="container py-5">
+  <div class="row">
+    <div class="col-12 mb-4">
+      <h5 class="dropdown">Select a category <i class="fas fa-caret-down"></i></h5>
+      <div class="dropdown-box text-left">
+        {% for entry in categories %}
+          <p class="mb-0">
+            <a href="/speakers/{{ entry.category|slug }}">{{ entry.category }}</a>
+          </p>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    {{ collection("talent", "collections/speakers/category-speakers") }}
+  </div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,112 @@
+{% set mentor = cms.collection('mentors') %}
+
+{% extends 'templates/base' %}
+
+{% block content %}
+
+
+<div class="bg-gradient text-white talent-block-banner">
+    <div class="container pt-sm-5 pt-4">
+        <div class="row mt-5 pb-4 rel-block">
+            <div class="subtext">
+                {% include 'assets/subtext/mentor-et.html' %}
+            </div>   
+            
+            <div class="et-icon et-icon-category">
+                {% include 'assets/et-icon.html' %}
+            </div>
+            
+            <div class="col-12 mb-3">
+                {{ cms_text('mentors-heading') }}
+            </div>
+            
+            <div class="col-lg-10">
+                {{ cms_text('mentors-subheading') }}
+                <div class="mt-3">
+                    {{ cms_button('mentors-contact') }}
+                </div>                
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container py-5">
+    <div class="row px-xl-2">
+        <div class="col-12 mb-4">
+            {{ cms_text('mentors-copy') }}
+        </div>
+    </div>
+
+
+    <div class="row px-xl-6 mb-4">
+        <div class="col-md-4">
+            {{ cms_heading('mentors-topics-heading') }}
+        </div>
+
+        <div class="col-md-8">
+            {{ cms_text('mentors-topics-copy') }}
+
+            <div class="small pt-3">
+                {{ cms_text('mentors-session-subtext') }}
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row px-xl-6">
+        <div class="col-md-4">
+            {{ cms_heading('mentors-session-heading') }}
+        </div>
+
+        <div class="col-md-8">
+            {{ cms_text('mentors-session-copy') }}
+        </div>
+    </div>
+
+
+    <div class="row pt-4 px-xl-2">
+        <div class="col-12">
+            {{ cms_text(mentors-copy-2) }}
+
+            <div class="mt-4">
+                {{ cms_button('mentors-contact') }}
+            </div> 
+        </div>
+    </div>
+
+    <div class="row pt-4">
+
+        {% for entry in mentor %}
+            <div class="col-xl col-lg-3 col-md-4 col-6 py-2">
+                <img src="{{ entry.image }}" alt="{{ entry.name }}" width="100%">
+                <p class="mt-1 mb-0"><b>{{ entry.name }}</b></p>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+<div class="bg-grey" id="contact">
+    <div class="container rel-block py-sm-5 py-4">
+        <div class="et-icon et-icon-talent">
+            {% include 'assets/et-icon.html' %}
+        </div>
+
+        <div class="mb-4">
+            <h2>Be quick - bookings will fill fast!</h2>
+            <div class="mt-3">
+                <p>
+                    <b>Bob bob</b> <br>
+                    000 000 000 <br>
+                    test.test@test.com
+                </p>
+            </div>
+        </div>
+        
+        {{ form('mentor') }}
+    </div>
+</div>
+
+
+
+{% endblock %}

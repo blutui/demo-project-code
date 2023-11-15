@@ -1,0 +1,12 @@
+{% for talent in collection.entries|sort_by('sort-order') %}
+  {% if ("Brand Ambassador" in talent.type) %}
+    <div class="col-xl-3 col-md-4 col-sm-6 pb-2 talent-block">
+      <a href="/talent/{{ talent.name|slug }}">
+        <div class="profile-pic mb-2 d-flex align-items-end justify-content-end p-2" style="background-image: url({{ talent.profile }});">
+          {% include 'assets/arrow-right' %}
+        </div>
+        <h5>{{ talent.name }}</h5>
+      </a>
+    </div>
+  {% endif %}
+{% endfor %}

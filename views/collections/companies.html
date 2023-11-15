@@ -1,0 +1,7 @@
+{% for entry in collection.entries|sort_by('sort-order') %}
+  <div class="col-xl-1 col-lg-2 col-md-3 col-sm-4 col-6 p-2 mx-auto d-flex align-items-center justify-content-center">
+    <a href="{{ entry.website }}" target="_blank">
+      <img src="{{ entry.image }}" alt="{{ entry.name }} logo" class="company-img">
+    </a>
+  </div>
+{% endfor %}

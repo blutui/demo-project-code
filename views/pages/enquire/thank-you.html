@@ -1,0 +1,17 @@
+{% extends 'templates/base' %}
+
+{% block content %}
+
+
+<div class="container pt-sm-5 pt-4">
+  <div class="row py-5">
+    <div class="col-12 text-center">
+      {{ cms_heading('enquire-thank-you') }}
+      {{ cms_text('enquire-thank-you-content') }}
+    </div>
+  </div>
+</div>
+
+{{ dump(cms.form('enquire')) }}
+
+{% endblock %}

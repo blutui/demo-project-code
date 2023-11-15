@@ -1,0 +1,49 @@
+{% extends 'templates/collection' %}
+
+
+{% block head %}
+
+
+<title>{{ post.title }} | {{ settings['site_name'] }}</title>
+
+<meta name="google-site-verification" content="{{ settings['google_verification'] }}">
+<meta name="description" content="{{ post.content|length > 140 ? post.content|striptags|slice(0, 140) ~ '...' : post.content }}">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="canonical" href="{{ post.slug }}">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="{{ settings['site_name'] }}">
+<meta property="og:title" content="{{ post.title }} | {{ settings['site_name'] }}">
+<meta property="og:image" content="{% if post['cover_image'] == null %}{% else %}{{ post['cover_image'] }}{% endif %}">
+<meta property="og:url" content="{{ post.slug }}">
+<meta property="og:description" content="{{ post.content|length > 140 ? post.content|striptags|slice(0, 140) ~ '...' : post.content }}">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="{{ post.title }} | {{ settings['site_name'] }}">
+<meta name="twitter:description" content="{{ post.content|length > 140 ? post.content|striptags|slice(0, 140) ~ '...' : post.content }}">
+<meta name="twitter:image" content="{% if post['cover_image'] == null %}{% else %}{{ post['cover_image'] }}{% endif %}">
+
+
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="container pt-sm-5 pt-3">
+  <div class="row pt-5 pb-4 post-block">
+    <div class="col-12">
+      <div class="mb-4">
+        <p class="mb-4"><a href="/blog" class="text-d-grey"><i class="fas fa-long-arrow-alt-left"></i> Back to blog</a></p>
+        <h1>{{ post.title }}</h1>
+        <p class="text-d-grey"><small>Published on {{ entry.publish_date|date('d M Y') }}</small></p>
+      </div>
+
+      <h5>{{ post.description }}</h5>
+
+      {{ post.content|raw }}
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}

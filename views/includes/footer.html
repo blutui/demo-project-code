@@ -1,0 +1,55 @@
+{% set menu = cms.menu('menu') %}
+{% set themes = cms.menu('themes') %}
+
+
+<footer class="bg-black text-white">
+  <div class="container pt-4 rel-block">
+    <div class="et-icon et-icon-footer">
+      {% include 'assets/et-icon.html' %}
+    </div>
+
+    <div class="row d-flex justify-content-between">
+      <div class="col-lg-4">
+        <h1 class="mb-3">Find <br> talent</h1>
+        <a href="/talent" class="btn text-white">View all</a>
+      </div>
+
+      <div class="px-2 mt-3 order-md-last">
+        {% for item in menu.items %}
+          <p>
+            <a href="{{ item.href }}" class="h4 mb-2">
+              {{ item.label }}
+            </a>
+          </p>
+        {% endfor %}
+      </div>
+
+      <div class="col-lg-4 col-md-6 mt-3">
+        <h4 class="mb-2">Themes</h4>
+        <ul class="pl-0">
+          {% for item in themes.items %}
+            <li>
+              <a href="{{ item.href }}">
+                {{ item.label }}
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+
+
+
+    <div class="row pt-4 pb-3 copyright">
+      <div class="col-md-6">
+        <p class="h6 mb-0">Copyright &copy; {{ "now"|date("Y") }}</p>
+      </div>
+      <div class="col-md-6 text-md-right">
+        <p class="mb-0 h6">
+          <!-- <a href="#" class="mr-md-3">Terms &amp; Conditions</a> -->
+          <a href="/privacy-policy">Privacy Policy</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>

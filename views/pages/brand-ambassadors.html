@@ -1,0 +1,39 @@
+{% set categories = cms.collection('categories') %}
+{% set collection = cms.collection('talent') %}
+{% set category = categories|filter(entry => (entry.category|slug) == route.data.slug)|first %}
+
+
+{% extends 'templates/base' %}
+
+{% block content %}
+
+
+<div class="bg-gradient text-white talent-block-banner">
+  <div class="container pt-sm-5 pt-4">
+    <div class="row mt-5 pb-4 rel-block">
+      <div class="subtext">
+        {% include 'assets/subtext/brand-ambassadors.html' %}
+      </div>
+      <div class="et-icon et-icon-category">
+        {% include 'assets/et-icon.html' %}
+      </div>
+
+      <div class="col-12 mb-3">
+        {{ cms_heading('brand-ambassadors') }}
+      </div>
+      <div class="col-md-8">
+        {{ cms_text('brand-ambassadors-content') }}
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="container py-5">
+  <div class="row">
+    {{ collection("brand-ambassadors", "collections/categories/brand-ambassadors") }}
+  </div>
+</div>
+
+
+{% endblock %}

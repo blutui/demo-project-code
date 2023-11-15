@@ -1,0 +1,41 @@
+{% extends 'templates/base' %}
+
+{% block content %}
+
+
+<div class="container pt-sm-5 pt-3">
+  <div class="row pt-5 pb-4">
+    <div class="col-12">
+      <h1 class="mb-3">{{ blog.name }}</h1>
+    </div>
+
+
+    {% for entry in blog.posts|sort_by('publish_date', true) %}
+      <div class="col-lg-4 col-sm-6 py-3 blog-block d-flex flex-column">
+        <a href="{{ entry.slug }}" class="mb-auto">
+          {% if entry.cover_image == null %}
+            <img src="" alt="{{ entry.title }} cover image" class="mb-2" width="100%">
+          {% else %}
+            <img src="{{ entry.cover_image }}" alt="{{ entry.title }} cover image" class="mb-2" width="100%">
+          {% endif %}
+
+          <p class="text-d-grey"><small>{{ entry.publish_date|date('d M Y') }}</small></p>
+          <h5>{{ entry.title }}</h5>
+
+          {% if not (entry.description == null) %}
+            <p class="desc text-d-grey">{{ entry.description }}</p>
+          {% endif %}
+        </a>
+
+        <a href="{{ entry.slug }}">
+          <p class="read-more mb-0">
+            Read More <i class="fas fa-long-arrow-alt-right"></i>
+          </p>
+        </a>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+
+{% endblock %}

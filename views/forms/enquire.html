@@ -1,0 +1,53 @@
+{% import 'macros/form' as ui %}
+
+{{ form_open() }}
+
+  <input type="hidden" name="_form" value="{{ form._form }}">
+  <input type="hidden" name="redirect" value="/enquire/thank-you">
+  {% if form.page %}
+    <input type="hidden" name="{{ form.page.name }}" value="{{ request.url }}">
+  {% endif %}
+
+  <div class="row">
+    <div class="col-md-6">
+      {{ ui.field(form['first-name']) }}
+    </div>
+
+    <div class="col-md-6">
+      {{ ui.field(form['last-name']) }}
+    </div>
+
+    <div class="col-md-6">
+      {{ ui.field(form.email) }}
+    </div>
+
+    <div class="col-md-6">
+      {{ ui.field(form.phone) }}
+    </div>
+
+    <div class="col-12">
+      {{ ui.field(form.company) }}
+    </div>
+
+    <div class="col-12">
+      {{ ui.field(form.speaker) }}
+    </div>
+   
+    <div class="col-12">
+      {{ ui.field(form['contact-method']) }}
+    </div>
+
+    <div class="col-12">
+      {{ ui.field(form.message) }}
+    </div>
+
+    <div class="col-12 form-group">
+      {{ recaptcha() }}
+    </div>
+
+    <div class="col-12 text-right">
+      <button type="submit" class="btn text-white">Submit</button>
+    </div>
+  </div>
+
+{{ form_close() }}

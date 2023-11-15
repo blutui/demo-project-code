@@ -1,0 +1,6 @@
+{% for entry in collection.entries |sort_by('sort-order') %}
+    <div class="col-md-3 py-2">
+        <img src="{{ entry.image }}" alt="{{ entry.name }}" width="100%">
+        <h5 class="mt-1 mb-0"><b>{{ entry.name }}</b></h5>
+    </div>
+{% endfor %}

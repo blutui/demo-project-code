@@ -1,0 +1,114 @@
+{% set collection = cms.collection('talent') %}
+
+
+{% extends 'templates/base' %}
+
+{% block content %}
+
+
+<div class="home-block d-flex align-items-end">
+  <div class="container py-sm-5 py-4">
+    <div class="banner-header mb-lg-6 mb-4 mt-4">
+      {{ cms_text('home-banner-heading') }} 
+     </div>
+    <div class="home-block-tag text-white d-md-flex align-items-center justify-content-between">
+      {{ cms_heading('home-kia-ora')}}
+
+      <div class="home-block-tag-text col-md-8 px-md-2 px-0 py-md-0 pt-2 pb-3">
+
+        
+        {{ cms_button('home-block-btn')}}
+
+                <div class="mb-1">
+          {{ cms_text('home-block-content')}}
+        </div>
+      </div>
+
+      
+    </div>
+
+
+    
+  </div>
+</div>
+
+
+<div class="bg-black text-white font-light py-4">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 pl-md-4 d-md-flex justify-content-md-between align-items-md-end">
+        <div class="text-no-margin mb-md-0 mb-3">
+          <div class="mb-3">
+            {{ cms_text('plenty-time-content')}}
+          </div>
+
+          {{ cms_text('outta-time-content')}}
+        </div>
+
+        {{ cms_button('home-enquire-btn')}}
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="px-sm-6">
+  <div class="py-md-5 py-4">
+    <div class="row px-2">
+      <div class="col-12 text-center">
+        {{ cms_heading('plenty-time')}}
+      </div>
+
+      {{ collection("trusted", "collections/companies") }}
+    </div>
+  </div>
+</div>
+
+<div class="bg-grey py-md-5 py-4">
+  <div class="container">
+    <div class="row rel-block">
+      <div class="subtext">
+        {% include 'assets/subtext/featured-talent.html' %}
+      </div>
+      <div class="col-12">
+        {{ cms_heading('featured-talent')}}
+        {{ cms_heading('featured-talent-content')}}
+      </div>
+      <div class="col-12 py-3">
+        <div class="feat-talent">
+          {{ collection("talent", "collections/featured-talent") }}
+        </div>
+      </div>
+
+      <div class="col-12 text-right">
+        <a href="/talent" class="btn text-white">View more</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="container py-md-5 py-4">
+  <div class="row rel-block">
+    <div class="subtext">
+      {% include 'assets/subtext/our-clients.html' %}
+    </div>
+
+    <div class="col-12 pl-md-5 pl-3 py-3 rel-block">
+      <div class="quote-block">
+        {% include 'assets/quote-block.html' %}
+      </div>
+      <div class="quote-outline">
+        {% include 'assets/quote-outline.html' %}
+      </div>
+
+      <div class="testimonials">
+        {{ collection("testimonials", "collections/testimonials") }}
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+{% endblock %}
